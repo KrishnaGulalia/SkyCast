@@ -24,6 +24,8 @@ export default function Weather() {
           temp : data.main.temp,
           humidity : data.main.humidity,
           windSpeed : Math.floor(data.wind.speed),
+          location : data.name,
+          icon: data.weather[0].main
         })
 
       }
@@ -47,20 +49,20 @@ export default function Weather() {
             <img src={Search_icon} alt='' ></img>
         </div>
         <img src={Clear_icon} alt='' className='Weather-icon'></img>
-        <p className='temp'>16</p>
-        <p className='location'>London</p>
+        <p className='temp'>{weatherData ? weatherData.temp : '--'}</p>
+        <p className='location'>{weatherData ? weatherData.location : '--'}</p>
         <div className='weather-data'>
           <div className='col'>
             <img src={humidity_icon} alt="" />
             <div>
-              <p>80%</p>
+              <p>{weatherData ? weatherData.humidity : '--'}%</p>
               <span>Humidity</span>
             </div>
           </div>
           <div className='col'>
             <img src={wind_icon} alt="" />
             <div>
-              <p>10 km/h</p>
+              <p>{weatherData ? weatherData.windSpeed : '--'} km/h</p>
               <span>Wind Speed</span>
             </div>
           </div>
