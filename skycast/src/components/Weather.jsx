@@ -48,7 +48,7 @@ export default function Weather() {
             <input type="text" placeholder='Search'  onChange={Handle}/>
             <img src={Search_icon} alt='' ></img>
         </div>
-        <img src={Clear_icon} alt='' className='Weather-icon'></img>
+        <img src={weatherData ? getWeatherIcon(weatherData.icon) : Clear_icon} alt='' className='Weather-icon'></img>
         <p className='temp'>{weatherData ? weatherData.temp : '--'}</p>
         <p className='location'>{weatherData ? weatherData.location : '--'}</p>
         <div className='weather-data'>
