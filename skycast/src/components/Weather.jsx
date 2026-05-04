@@ -1,4 +1,5 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
 import './Weather.css'
 import Search_icon from '../images/search.png'
 import Clear_icon from '../Assets/clear.png'
@@ -10,10 +11,39 @@ import wind_icon from '../Assets/wind.png'
 import humidity_icon from '../Assets/humidity.png'
 
 export default function Weather() {
+  const [city , setCity] = useState("")
+  const[weatherData,setWeatherData] = useState(false)
+  useEffect(()=>{
+    async function search(city) {
+      try{
+        const key = "5720a3302956205898ed7d17314b5f3f"
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`
+        const res = await fetch(url)
+        const data = await res.json()
+        setWeatherData({
+          temp : data.main.temp,
+          humidity : data.main.humidity,
+          windSpeed : Math.floor(data.wind.speed),
+        })
+
+      }
+      catch(err){
+
+      }
+      
+    }
+    if(city){
+      search(city)
+    }
+    
+  },[city])
+  function Handle(e){
+    setCity(e.target.value)
+  }
   return (
     <div className='Weather'>
         <div className='Search'>
-            <input type="text" placeholder='Search' />
+            <input type="text" placeholder='Search'  onChange={Handle}/>
             <img src={Search_icon} alt='' ></img>
         </div>
         <img src={Clear_icon} alt='' className='Weather-icon'></img>

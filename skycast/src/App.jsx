@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 import Weather from './components/Weather'
 
 export default function App() {
