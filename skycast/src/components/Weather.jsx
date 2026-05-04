@@ -11,7 +11,7 @@ import wind_icon from '../Assets/wind.png'
 import humidity_icon from '../Assets/humidity.png'
 
 export default function Weather() {
-  const [city , setCity] = useState("London")
+  const [city , setCity] = useState("")
   const getWeatherIcon = (icon) =>{
     switch(icon){
       case 'Clear' : return Clear_icon
@@ -48,9 +48,10 @@ export default function Weather() {
       search(city)
     }
     
-  },[])
+  },[city])
   function Handle(e){
-    setCity(e.target.value)
+    const value = e.target.value
+    setCity(value)
   }
   return (
     <div className='Weather'>
@@ -59,7 +60,7 @@ export default function Weather() {
             <img src={Search_icon} alt='' ></img>
         </div>
         <img src={weatherData? getWeatherIcon(weatherData.icon): Clear_icon} alt='' className='Weather-icon'></img>
-        <p className='temp'>{weatherData ? weatherData.temp : '--'}</p>
+        <p className='temp'>{weatherData ? weatherData.temp + "°C" : '--'}</p>
         <p className='location'>{weatherData ? weatherData.location : '--'}</p>
         <div className='weather-data'>
           <div className='col'>
