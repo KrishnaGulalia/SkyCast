@@ -14,7 +14,6 @@ export default function Weather() {
     <div className='Weather'>
         <div className='Search'>
             <input type="text" placeholder='Search' />
-            {/* <p>🔍</p> */}
             <img src={Search_icon} alt='' ></img>
         </div>
         <img src={Clear_icon} alt='' className='Weather-icon'></img>
