@@ -11,7 +11,17 @@ import wind_icon from '../Assets/wind.png'
 import humidity_icon from '../Assets/humidity.png'
 
 export default function Weather() {
-  const [city , setCity] = useState("")
+  const [city , setCity] = useState("London")
+  const getWeatherIcon = (icon) =>{
+    switch(icon){
+      case 'Clear' : return Clear_icon
+      case 'Clouds' : return Cloud_icon
+      case 'Drizzle' : return drizzle_icon
+      case 'Rain' : return rain_icon
+      case 'Snow' : return snow_icon
+      default : return Clear_icon
+    }
+  } 
   const[weatherData,setWeatherData] = useState(false)
   useEffect(()=>{
     async function search(city) {
@@ -38,7 +48,7 @@ export default function Weather() {
       search(city)
     }
     
-  },[city])
+  },[])
   function Handle(e){
     setCity(e.target.value)
   }
@@ -48,7 +58,7 @@ export default function Weather() {
             <input type="text" placeholder='Search'  onChange={Handle}/>
             <img src={Search_icon} alt='' ></img>
         </div>
-        <img src={weatherData ? getWeatherIcon(weatherData.icon) : Clear_icon} alt='' className='Weather-icon'></img>
+        <img src={weatherData? getWeatherIcon(weatherData.icon): Clear_icon} alt='' className='Weather-icon'></img>
         <p className='temp'>{weatherData ? weatherData.temp : '--'}</p>
         <p className='location'>{weatherData ? weatherData.location : '--'}</p>
         <div className='weather-data'>
