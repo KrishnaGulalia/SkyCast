@@ -17,6 +17,25 @@ export default function Weather() {
             {/* <p>🔍</p> */}
             <img src={Search_icon} alt='' ></img>
         </div>
+        <img src={Clear_icon} alt='' className='Weather-icon'></img>
+        <p className='temp'>16</p>
+        <p className='location'>London</p>
+        <div className='weather-data'>
+          <div className='col'>
+            <img src={humidity_icon} alt="" />
+            <div>
+              <p>80%</p>
+              <span>Humidity</span>
+            </div>
+          </div>
+          <div className='col'>
+            <img src={wind_icon} alt="" />
+            <div>
+              <p>10 km/h</p>
+              <span>Wind Speed</span>
+            </div>
+          </div>
+        </div>
     </div>
   )
 }
