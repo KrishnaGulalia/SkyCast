@@ -32,7 +32,7 @@ export default function Weather() {
         const res = await fetch(url)
         const data = await res.json()
         setWeatherData({
-          temp : data.main.temp,
+          temp : Math.floor(data.main.temp),
           humidity : data.main.humidity,
           windSpeed :(data.wind.speed),
           location : data.name,
