@@ -12,6 +12,7 @@ import humidity_icon from '../Assets/humidity.png'
 
 export default function Weather() {
   const [city , setCity] = useState("")
+  const[cityInput, setCityInput] = useState("")
   const getWeatherIcon = (icon) =>{
     switch(icon){
       case 'Clear' : return Clear_icon
@@ -48,7 +49,7 @@ export default function Weather() {
       search(city)
     }
     
-  },[city])
+  },[cityInput])
   function Handle(e){
     const value = e.target.value
     setCity(value)
@@ -57,7 +58,9 @@ export default function Weather() {
     <div className='Weather'>
         <div className='Search'>
             <input type="text" placeholder='Search'  onChange={Handle}/>
-            <img src={Search_icon} alt='' ></img>
+            <img src={Search_icon} alt='' onClick={()=>{
+              setCityInput(city)
+            }} ></img>
         </div>
         <img src={weatherData? getWeatherIcon(weatherData.icon): Clear_icon} alt='' className='Weather-icon'></img>
         <p className='temp'>{weatherData ? weatherData.temp + "°C" : '--'}</p>
