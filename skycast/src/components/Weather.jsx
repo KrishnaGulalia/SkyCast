@@ -34,7 +34,7 @@ export default function Weather() {
         setWeatherData({
           temp : data.main.temp,
           humidity : data.main.humidity,
-          windSpeed : Math.floor(data.wind.speed),
+          windSpeed :(data.wind.speed),
           location : data.name,
           icon: data.weather[0].main
         })
