@@ -20,6 +20,7 @@ export default function App() {
           </Routes>
 
         </div>
+        <Footer />
       </div>
     </BrowserRouter>
   )
