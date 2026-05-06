@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import './Weather.css'
-import Search_icon from '../images/search.png'
+import Search_icon from '../images/search_icon.png'
 import Clear_icon from '../Assets/clear.png'
 import Cloud_icon from '../Assets/cloud.png'
 import drizzle_icon from '../Assets/drizzle.png'
